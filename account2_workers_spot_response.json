@@ -1,0 +1,124 @@
+{
+    "SpotInstanceRequests": [
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "default"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-qzb8nciq",
+            "SpotPrice": "0.028200",
+            "State": "open",
+            "Status": {
+                "Code": "pending-evaluation",
+                "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
+                "UpdateTime": "2020-09-13T15:45:00.000Z"
+            },
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        },
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "default"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-cqwgq5gn",
+            "SpotPrice": "0.028200",
+            "State": "open",
+            "Status": {
+                "Code": "pending-evaluation",
+                "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
+                "UpdateTime": "2020-09-13T15:45:00.000Z"
+            },
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        },
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "default"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-qaqrms8m",
+            "SpotPrice": "0.028200",
+            "State": "open",
+            "Status": {
+                "Code": "pending-evaluation",
+                "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
+                "UpdateTime": "2020-09-13T15:45:00.000Z"
+            },
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        }
+    ]
+}

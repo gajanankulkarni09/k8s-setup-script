@@ -1,0 +1,23 @@
+{
+    "key_name": "ec2-key",
+    "instance_type": "m5.large",
+    "zone": "ap-south-1b",
+    "account1": {
+        "iam_instance_profile":"k8s-ec2-ebs-provisioner-role",
+        "master": {
+            "subnet_id": "subnet-0f47ec4d89b9d85cb",
+            "sg_id": "sg-014c603a13a037b55"
+        },
+        "workers": {
+            "subnet_id": "subnet-0cb52da0c85a58f96",
+            "sg_id": "sg-09b9f2a43f3e22c79"
+        }
+    },
+    "account2": {
+        "iam_instance_profile":"k8s-ec2-ebs-provisioner-policy",
+        "workers": {
+            "subnet_id": "subnet-0738d1b5476344058",
+            "sg_id": "sg-021a58d09979ee197"
+        }
+    }
+}

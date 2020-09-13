@@ -1,0 +1,9 @@
+{
+  "master_ips":{
+    "public_ip":"master_public_ip",
+    "private_ip":"master_private_ip"
+  },
+  "worker_ips":[ "worker_ips_string" ],
+  "account1_spot_request_ids": [ "account1_spot_request_ids_string" ],
+  "account2_spot_request_ids": [ "account2_spot_request_ids_string" ]
+} 

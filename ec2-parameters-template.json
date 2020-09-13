@@ -1,0 +1,23 @@
+{
+    "key_name": "key_name",
+    "instance_type": "instance_type",
+    "zone": "zone",
+    "account1": {
+        "iam_instance_profile":"account1_iam_instance_profile",
+        "master": {
+            "subnet_id": "master_subnet_id",
+            "sg_id": "master_sg_id"
+        },
+        "workers": {
+            "subnet_id": "account1_workers_subnet_id",
+            "sg_id": "account1_workers_sg_id"
+        }
+    },
+    "account2": {
+        "iam_instance_profile":"account2_iam_instance_profile",
+        "workers": {
+            "subnet_id": "account2_workers_subnet_id",
+            "sg_id": "account2_workers_sg_id"
+        }
+    }
+}

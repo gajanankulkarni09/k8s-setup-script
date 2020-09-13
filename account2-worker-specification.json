@@ -1,0 +1,19 @@
+{
+  "ImageId": "ami-02b5fbc2cb28b77b8",
+  "KeyName": "ec2-key",
+  "NetworkInterfaces": [
+    {
+      "DeviceIndex": 0,
+      "SubnetId": "subnet-0738d1b5476344058",
+      "Groups": [ "sg-021a58d09979ee197" ],
+      "AssociatePublicIpAddress": true
+    }
+  ],
+  "InstanceType": "m5.large",
+  "Placement": {
+    "AvailabilityZone": "ap-south-1b"
+  },
+  "IamInstanceProfile": {
+      "Name": "k8s-ec2-ebs-provisioner-policy"
+  }
+}

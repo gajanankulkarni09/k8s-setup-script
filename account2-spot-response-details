@@ -1,0 +1,136 @@
+{
+    "SpotInstanceRequests": [
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "InstanceId": "i-0e0888ed9623ec83c",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "k8s-worker-sg",
+                        "GroupId": "sg-021a58d09979ee197"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "LaunchedAvailabilityZone": "ap-south-1b",
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-qaqrms8m",
+            "SpotPrice": "0.028200",
+            "State": "active",
+            "Status": {
+                "Code": "fulfilled",
+                "Message": "Your spot request is fulfilled.",
+                "UpdateTime": "2020-09-13T15:45:01.000Z"
+            },
+            "Tags": [],
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        },
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "InstanceId": "i-074fa543187209764",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "k8s-worker-sg",
+                        "GroupId": "sg-021a58d09979ee197"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "LaunchedAvailabilityZone": "ap-south-1b",
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-qzb8nciq",
+            "SpotPrice": "0.028200",
+            "State": "active",
+            "Status": {
+                "Code": "fulfilled",
+                "Message": "Your spot request is fulfilled.",
+                "UpdateTime": "2020-09-13T15:45:01.000Z"
+            },
+            "Tags": [],
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        },
+        {
+            "CreateTime": "2020-09-13T15:45:00.000Z",
+            "InstanceId": "i-0f7ec5b78f6e46a69",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "k8s-worker-sg",
+                        "GroupId": "sg-021a58d09979ee197"
+                    }
+                ],
+                "IamInstanceProfile": {
+                    "Name": "k8s-ec2-ebs-provisioner-policy"
+                },
+                "ImageId": "ami-02b5fbc2cb28b77b8",
+                "InstanceType": "m5.large",
+                "KeyName": "ec2-key",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-0738d1b5476344058"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "ap-south-1b"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "LaunchedAvailabilityZone": "ap-south-1b",
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-cqwgq5gn",
+            "SpotPrice": "0.028200",
+            "State": "active",
+            "Status": {
+                "Code": "fulfilled",
+                "Message": "Your spot request is fulfilled.",
+                "UpdateTime": "2020-09-13T15:45:01.000Z"
+            },
+            "Tags": [],
+            "Type": "persistent",
+            "InstanceInterruptionBehavior": "stop"
+        }
+    ]
+}

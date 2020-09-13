@@ -1,0 +1,19 @@
+{
+  "ImageId": "ami-02b5fbc2cb28b77b8",
+  "KeyName": "key_name",
+  "NetworkInterfaces": [
+    {
+      "DeviceIndex": 0,
+      "SubnetId": "subnet_id",
+      "Groups": [ "sg_id" ],
+      "AssociatePublicIpAddress": true
+    }
+  ],
+  "InstanceType": "instance_type",
+  "Placement": {
+    "AvailabilityZone": "zone"
+  },
+  "IamInstanceProfile": {
+      "Name": "iam_instance_profile"
+  }
+}
