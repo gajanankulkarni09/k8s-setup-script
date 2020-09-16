@@ -11,7 +11,8 @@ IP=$(kubectl get nodes -lnode-role.kubernetes.io/master -o json \
 | jq -r '.items[0].status.addresses[] | select(.type=="InternalIP") | .address')
 PORT=443
 
+echo "#!/bin/bash" > temp.sh
 echo "sudo kubeadm join $IP:$PORT \
---token=$TOKEN --discovery-token-ca-cert-hash sha256:$CERT_HASH" > temp.sh
+--token=$TOKEN --discovery-token-ca-cert-hash sha256:$CERT_HASH" >> temp.sh
 
 cat temp.sh

@@ -34,31 +34,21 @@ sed -e "s/master_private_ip/${master_private_ip}/" \
     -e "s/bootstrap_token_value/${bootstrap_token_value}/" "kubeadm-config.yaml" > temp
 mv temp kubeadm-config.yaml
 
-sleep 3m
+sleep 2m
 
-printf "ubuntu@%s\n" "${worker_ips[@]}" |  sed -e "s/'//g" > ec2-host
-#export PDSH_SSH_ARGS_APPEND=" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}"
+printf "ubuntu@%s\n" "${worker_ips[@]}" |  sed -e "s/'//g" > worker-hosts
+echo "ubuntu@${master_public_ip}" > all-hosts
+cat worker-hosts >> all-hosts
 
 scp -i "${ec2_key}" -o StrictHostKeyChecking=no kubeadm-config.yaml "ubuntu@${master_public_ip}":config.yaml
-echo "installing prerequisites on master"
-ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < install-prerequisites.sh
+echo "installing prerequisites on all nodes"
+parallel-ssh -h all-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I < install-prerequisites.sh
+
 echo "installing k8s on master"
 ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < install-master.sh
 echo "generating worker node script"
-{ cat install-prerequisites.sh ;\
-  ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < generate-workernode-script.sh "${bootstrap_token_value}"; } > install-workernode.sh
-
+ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < generate-workernode-script.sh "${bootstrap_token_value}" > install-workernode.sh
 echo "installions on worker nodes"
-#pdsh -w ^ec2-host -x "${master_public_ip}" -R ssh -l ubuntu < install-workernode.sh
+parallel-ssh -h worker-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I <install-workernode.sh
 
- parallel-ssh -h ec2-host -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I <install-workernode.sh
-# for ((i=0;i<"${#worker_ips[@]}";i++))
-# do
-#     echo "worker node ${i}"
-#     temp_ip=$(echo "${worker_ips[i]}" | sed -e "s/'//g" )
-#     echo "installing prerequisites on worker node ${i}"
-#     ssh -i  "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${temp_ip}" "bash -s" -- < install-prerequisites.sh
-#     echo "installing k8s on worker node ${i}"
-#     ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${temp_ip}" "bash -s" -- < install-workernode.sh
-# done
 /bin/bash ./init-script.sh $master_private_ip $domain_name
