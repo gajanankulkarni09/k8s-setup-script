@@ -1,0 +1,8 @@
+account1-instances-details.json
+account1-spot-response-details
+account1_workers_spot_response.json
+account2-instances-details.json
+account2-spot-response-details
+account2_workers_spot_response.json
+master_spot_response.json
+install-workernode.sh
