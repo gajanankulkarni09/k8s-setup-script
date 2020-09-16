@@ -17,4 +17,4 @@ deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 sudo apt-get update
 sudo apt-get install -y kubelet=1.18.0-00 kubeadm=1.18.0-00 kubectl=1.18.0-00
-sudo kubeadm join 10.0.0.158:443 --token=abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:62682f6580f3ccdec24a59a4b1db6fcc57f84f989056d7dd304e5f8e16531c20
+sudo kubeadm join 10.0.0.42:443 --token=abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:39b92baf167a88b6fc844245fa3d7049c9c0bfaad742b4d21f0b42ee52daf3c1

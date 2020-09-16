@@ -6,10 +6,10 @@
                 {
                     "AmiLaunchIndex": 2,
                     "ImageId": "ami-02b5fbc2cb28b77b8",
-                    "InstanceId": "i-0e0888ed9623ec83c",
+                    "InstanceId": "i-0d4ed2a4f0738be8f",
                     "InstanceType": "m5.large",
                     "KeyName": "ec2-key",
-                    "LaunchTime": "2020-09-13T15:45:01.000Z",
+                    "LaunchTime": "2020-09-14T22:41:28.000Z",
                     "Monitoring": {
                         "State": "disabled"
                     },
@@ -18,14 +18,14 @@
                         "GroupName": "",
                         "Tenancy": "default"
                     },
-                    "PrivateDnsName": "ip-10-1-1-128.ap-south-1.compute.internal",
-                    "PrivateIpAddress": "10.1.1.128",
+                    "PrivateDnsName": "ip-10-1-1-116.ap-south-1.compute.internal",
+                    "PrivateIpAddress": "10.1.1.116",
                     "ProductCodes": [],
-                    "PublicDnsName": "ec2-13-233-36-15.ap-south-1.compute.amazonaws.com",
-                    "PublicIpAddress": "13.233.36.15",
+                    "PublicDnsName": "ec2-52-66-235-121.ap-south-1.compute.amazonaws.com",
+                    "PublicIpAddress": "52.66.235.121",
                     "State": {
-                        "Code": 0,
-                        "Name": "pending"
+                        "Code": 16,
+                        "Name": "running"
                     },
                     "StateTransitionReason": "",
                     "SubnetId": "subnet-0738d1b5476344058",
@@ -35,14 +35,14 @@
                         {
                             "DeviceName": "/dev/sda1",
                             "Ebs": {
-                                "AttachTime": "2020-09-13T15:45:02.000Z",
+                                "AttachTime": "2020-09-14T22:41:29.000Z",
                                 "DeleteOnTermination": true,
-                                "Status": "attaching",
-                                "VolumeId": "vol-0744d211ae9a4d3f4"
+                                "Status": "attached",
+                                "VolumeId": "vol-01293f0a8bb0d69d3"
                             }
                         }
                     ],
-                    "ClientToken": "265da434168907107c29ff0c93769b4e7572f051cf4d913bd38ccabf6418",
+                    "ClientToken": "427286a343fc26eaeab52fffba4628e8e22c801db76ef3919ce8955b0871",
                     "EbsOptimized": false,
                     "EnaSupport": true,
                     "Hypervisor": "xen",
@@ -55,15 +55,15 @@
                         {
                             "Association": {
                                 "IpOwnerId": "amazon",
-                                "PublicDnsName": "ec2-13-233-36-15.ap-south-1.compute.amazonaws.com",
-                                "PublicIp": "13.233.36.15"
+                                "PublicDnsName": "ec2-52-66-235-121.ap-south-1.compute.amazonaws.com",
+                                "PublicIp": "52.66.235.121"
                             },
                             "Attachment": {
-                                "AttachTime": "2020-09-13T15:45:01.000Z",
-                                "AttachmentId": "eni-attach-0711222ca9d9d862f",
+                                "AttachTime": "2020-09-14T22:41:28.000Z",
+                                "AttachmentId": "eni-attach-0cfbde4a79d59dff5",
                                 "DeleteOnTermination": true,
                                 "DeviceIndex": 0,
-                                "Status": "attaching"
+                                "Status": "attached"
                             },
                             "Description": "",
                             "Groups": [
@@ -73,21 +73,21 @@
                                 }
                             ],
                             "Ipv6Addresses": [],
-                            "MacAddress": "0a:84:16:4d:e6:90",
-                            "NetworkInterfaceId": "eni-01992a2a27986e5df",
+                            "MacAddress": "0a:2f:93:c6:14:3a",
+                            "NetworkInterfaceId": "eni-06b4a97e8db038618",
                             "OwnerId": "626608068914",
-                            "PrivateDnsName": "ip-10-1-1-128.ap-south-1.compute.internal",
-                            "PrivateIpAddress": "10.1.1.128",
+                            "PrivateDnsName": "ip-10-1-1-116.ap-south-1.compute.internal",
+                            "PrivateIpAddress": "10.1.1.116",
                             "PrivateIpAddresses": [
                                 {
                                     "Association": {
                                         "IpOwnerId": "amazon",
-                                        "PublicDnsName": "ec2-13-233-36-15.ap-south-1.compute.amazonaws.com",
-                                        "PublicIp": "13.233.36.15"
+                                        "PublicDnsName": "ec2-52-66-235-121.ap-south-1.compute.amazonaws.com",
+                                        "PublicIp": "52.66.235.121"
                                     },
                                     "Primary": true,
-                                    "PrivateDnsName": "ip-10-1-1-128.ap-south-1.compute.internal",
-                                    "PrivateIpAddress": "10.1.1.128"
+                                    "PrivateDnsName": "ip-10-1-1-116.ap-south-1.compute.internal",
+                                    "PrivateIpAddress": "10.1.1.116"
                                 }
                             ],
                             "SourceDestCheck": true,
@@ -106,7 +106,7 @@
                         }
                     ],
                     "SourceDestCheck": true,
-                    "SpotInstanceRequestId": "sir-qaqrms8m",
+                    "SpotInstanceRequestId": "sir-t2kipc5m",
                     "VirtualizationType": "hvm",
                     "CpuOptions": {
                         "CoreCount": 1,
@@ -119,129 +119,7 @@
                         "Configured": false
                     },
                     "MetadataOptions": {
-                        "State": "pending",
-                        "HttpTokens": "optional",
-                        "HttpPutResponseHopLimit": 1,
-                        "HttpEndpoint": "enabled"
-                    }
-                },
-                {
-                    "AmiLaunchIndex": 1,
-                    "ImageId": "ami-02b5fbc2cb28b77b8",
-                    "InstanceId": "i-074fa543187209764",
-                    "InstanceType": "m5.large",
-                    "KeyName": "ec2-key",
-                    "LaunchTime": "2020-09-13T15:45:01.000Z",
-                    "Monitoring": {
-                        "State": "disabled"
-                    },
-                    "Placement": {
-                        "AvailabilityZone": "ap-south-1b",
-                        "GroupName": "",
-                        "Tenancy": "default"
-                    },
-                    "PrivateDnsName": "ip-10-1-1-208.ap-south-1.compute.internal",
-                    "PrivateIpAddress": "10.1.1.208",
-                    "ProductCodes": [],
-                    "PublicDnsName": "ec2-13-235-49-175.ap-south-1.compute.amazonaws.com",
-                    "PublicIpAddress": "13.235.49.175",
-                    "State": {
-                        "Code": 0,
-                        "Name": "pending"
-                    },
-                    "StateTransitionReason": "",
-                    "SubnetId": "subnet-0738d1b5476344058",
-                    "VpcId": "vpc-0a0c255b83d732f5a",
-                    "Architecture": "x86_64",
-                    "BlockDeviceMappings": [
-                        {
-                            "DeviceName": "/dev/sda1",
-                            "Ebs": {
-                                "AttachTime": "2020-09-13T15:45:02.000Z",
-                                "DeleteOnTermination": true,
-                                "Status": "attaching",
-                                "VolumeId": "vol-0ee063998133c94a1"
-                            }
-                        }
-                    ],
-                    "ClientToken": "265da434168907107c29ff0c93769b4e7572f051cf4d913bd38ccabf6418",
-                    "EbsOptimized": false,
-                    "EnaSupport": true,
-                    "Hypervisor": "xen",
-                    "IamInstanceProfile": {
-                        "Arn": "arn:aws:iam::626608068914:instance-profile/k8s-ec2-ebs-provisioner-policy",
-                        "Id": "AIPAZDZGALEZHXLJBI2GT"
-                    },
-                    "InstanceLifecycle": "spot",
-                    "NetworkInterfaces": [
-                        {
-                            "Association": {
-                                "IpOwnerId": "amazon",
-                                "PublicDnsName": "ec2-13-235-49-175.ap-south-1.compute.amazonaws.com",
-                                "PublicIp": "13.235.49.175"
-                            },
-                            "Attachment": {
-                                "AttachTime": "2020-09-13T15:45:01.000Z",
-                                "AttachmentId": "eni-attach-0e34115537e1bd4eb",
-                                "DeleteOnTermination": true,
-                                "DeviceIndex": 0,
-                                "Status": "attaching"
-                            },
-                            "Description": "",
-                            "Groups": [
-                                {
-                                    "GroupName": "k8s-worker-sg",
-                                    "GroupId": "sg-021a58d09979ee197"
-                                }
-                            ],
-                            "Ipv6Addresses": [],
-                            "MacAddress": "0a:ad:e8:74:96:00",
-                            "NetworkInterfaceId": "eni-0968b9cbb5136cc6a",
-                            "OwnerId": "626608068914",
-                            "PrivateDnsName": "ip-10-1-1-208.ap-south-1.compute.internal",
-                            "PrivateIpAddress": "10.1.1.208",
-                            "PrivateIpAddresses": [
-                                {
-                                    "Association": {
-                                        "IpOwnerId": "amazon",
-                                        "PublicDnsName": "ec2-13-235-49-175.ap-south-1.compute.amazonaws.com",
-                                        "PublicIp": "13.235.49.175"
-                                    },
-                                    "Primary": true,
-                                    "PrivateDnsName": "ip-10-1-1-208.ap-south-1.compute.internal",
-                                    "PrivateIpAddress": "10.1.1.208"
-                                }
-                            ],
-                            "SourceDestCheck": true,
-                            "Status": "in-use",
-                            "SubnetId": "subnet-0738d1b5476344058",
-                            "VpcId": "vpc-0a0c255b83d732f5a",
-                            "InterfaceType": "interface"
-                        }
-                    ],
-                    "RootDeviceName": "/dev/sda1",
-                    "RootDeviceType": "ebs",
-                    "SecurityGroups": [
-                        {
-                            "GroupName": "k8s-worker-sg",
-                            "GroupId": "sg-021a58d09979ee197"
-                        }
-                    ],
-                    "SourceDestCheck": true,
-                    "SpotInstanceRequestId": "sir-qzb8nciq",
-                    "VirtualizationType": "hvm",
-                    "CpuOptions": {
-                        "CoreCount": 1,
-                        "ThreadsPerCore": 2
-                    },
-                    "CapacityReservationSpecification": {
-                        "CapacityReservationPreference": "open"
-                    },
-                    "HibernationOptions": {
-                        "Configured": false
-                    },
-                    "MetadataOptions": {
-                        "State": "pending",
+                        "State": "applied",
                         "HttpTokens": "optional",
                         "HttpPutResponseHopLimit": 1,
                         "HttpEndpoint": "enabled"
@@ -250,10 +128,10 @@
                 {
                     "AmiLaunchIndex": 0,
                     "ImageId": "ami-02b5fbc2cb28b77b8",
-                    "InstanceId": "i-0f7ec5b78f6e46a69",
+                    "InstanceId": "i-0f32cd563ca32e4a9",
                     "InstanceType": "m5.large",
                     "KeyName": "ec2-key",
-                    "LaunchTime": "2020-09-13T15:45:01.000Z",
+                    "LaunchTime": "2020-09-14T22:41:28.000Z",
                     "Monitoring": {
                         "State": "disabled"
                     },
@@ -262,14 +140,14 @@
                         "GroupName": "",
                         "Tenancy": "default"
                     },
-                    "PrivateDnsName": "ip-10-1-1-50.ap-south-1.compute.internal",
-                    "PrivateIpAddress": "10.1.1.50",
+                    "PrivateDnsName": "ip-10-1-1-43.ap-south-1.compute.internal",
+                    "PrivateIpAddress": "10.1.1.43",
                     "ProductCodes": [],
-                    "PublicDnsName": "ec2-13-232-41-221.ap-south-1.compute.amazonaws.com",
-                    "PublicIpAddress": "13.232.41.221",
+                    "PublicDnsName": "ec2-15-207-111-206.ap-south-1.compute.amazonaws.com",
+                    "PublicIpAddress": "15.207.111.206",
                     "State": {
-                        "Code": 0,
-                        "Name": "pending"
+                        "Code": 16,
+                        "Name": "running"
                     },
                     "StateTransitionReason": "",
                     "SubnetId": "subnet-0738d1b5476344058",
@@ -279,14 +157,14 @@
                         {
                             "DeviceName": "/dev/sda1",
                             "Ebs": {
-                                "AttachTime": "2020-09-13T15:45:02.000Z",
+                                "AttachTime": "2020-09-14T22:41:29.000Z",
                                 "DeleteOnTermination": true,
-                                "Status": "attaching",
-                                "VolumeId": "vol-03bca43e928704c03"
+                                "Status": "attached",
+                                "VolumeId": "vol-03a8069394aef1e3b"
                             }
                         }
                     ],
-                    "ClientToken": "265da434168907107c29ff0c93769b4e7572f051cf4d913bd38ccabf6418",
+                    "ClientToken": "427286a343fc26eaeab52fffba4628e8e22c801db76ef3919ce8955b0871",
                     "EbsOptimized": false,
                     "EnaSupport": true,
                     "Hypervisor": "xen",
@@ -299,15 +177,15 @@
                         {
                             "Association": {
                                 "IpOwnerId": "amazon",
-                                "PublicDnsName": "ec2-13-232-41-221.ap-south-1.compute.amazonaws.com",
-                                "PublicIp": "13.232.41.221"
+                                "PublicDnsName": "ec2-15-207-111-206.ap-south-1.compute.amazonaws.com",
+                                "PublicIp": "15.207.111.206"
                             },
                             "Attachment": {
-                                "AttachTime": "2020-09-13T15:45:01.000Z",
-                                "AttachmentId": "eni-attach-01602229c2ad3c5b4",
+                                "AttachTime": "2020-09-14T22:41:28.000Z",
+                                "AttachmentId": "eni-attach-06d1c61ba7b898446",
                                 "DeleteOnTermination": true,
                                 "DeviceIndex": 0,
-                                "Status": "attaching"
+                                "Status": "attached"
                             },
                             "Description": "",
                             "Groups": [
@@ -317,21 +195,21 @@
                                 }
                             ],
                             "Ipv6Addresses": [],
-                            "MacAddress": "0a:64:f8:51:91:fe",
-                            "NetworkInterfaceId": "eni-0959e50fe00f97d51",
+                            "MacAddress": "0a:16:5a:ad:27:5c",
+                            "NetworkInterfaceId": "eni-0a9ce51d8dd2204f5",
                             "OwnerId": "626608068914",
-                            "PrivateDnsName": "ip-10-1-1-50.ap-south-1.compute.internal",
-                            "PrivateIpAddress": "10.1.1.50",
+                            "PrivateDnsName": "ip-10-1-1-43.ap-south-1.compute.internal",
+                            "PrivateIpAddress": "10.1.1.43",
                             "PrivateIpAddresses": [
                                 {
                                     "Association": {
                                         "IpOwnerId": "amazon",
-                                        "PublicDnsName": "ec2-13-232-41-221.ap-south-1.compute.amazonaws.com",
-                                        "PublicIp": "13.232.41.221"
+                                        "PublicDnsName": "ec2-15-207-111-206.ap-south-1.compute.amazonaws.com",
+                                        "PublicIp": "15.207.111.206"
                                     },
                                     "Primary": true,
-                                    "PrivateDnsName": "ip-10-1-1-50.ap-south-1.compute.internal",
-                                    "PrivateIpAddress": "10.1.1.50"
+                                    "PrivateDnsName": "ip-10-1-1-43.ap-south-1.compute.internal",
+                                    "PrivateIpAddress": "10.1.1.43"
                                 }
                             ],
                             "SourceDestCheck": true,
@@ -350,7 +228,7 @@
                         }
                     ],
                     "SourceDestCheck": true,
-                    "SpotInstanceRequestId": "sir-cqwgq5gn",
+                    "SpotInstanceRequestId": "sir-bcagmfgm",
                     "VirtualizationType": "hvm",
                     "CpuOptions": {
                         "CoreCount": 1,
@@ -363,7 +241,129 @@
                         "Configured": false
                     },
                     "MetadataOptions": {
-                        "State": "pending",
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled"
+                    }
+                },
+                {
+                    "AmiLaunchIndex": 1,
+                    "ImageId": "ami-02b5fbc2cb28b77b8",
+                    "InstanceId": "i-0ded5c26935487c0b",
+                    "InstanceType": "m5.large",
+                    "KeyName": "ec2-key",
+                    "LaunchTime": "2020-09-14T22:41:28.000Z",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "ap-south-1b",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-10-1-1-182.ap-south-1.compute.internal",
+                    "PrivateIpAddress": "10.1.1.182",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-3-7-254-118.ap-south-1.compute.amazonaws.com",
+                    "PublicIpAddress": "3.7.254.118",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-0738d1b5476344058",
+                    "VpcId": "vpc-0a0c255b83d732f5a",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2020-09-14T22:41:29.000Z",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-079ff56e3e6b897f9"
+                            }
+                        }
+                    ],
+                    "ClientToken": "427286a343fc26eaeab52fffba4628e8e22c801db76ef3919ce8955b0871",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::626608068914:instance-profile/k8s-ec2-ebs-provisioner-policy",
+                        "Id": "AIPAZDZGALEZHXLJBI2GT"
+                    },
+                    "InstanceLifecycle": "spot",
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-3-7-254-118.ap-south-1.compute.amazonaws.com",
+                                "PublicIp": "3.7.254.118"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2020-09-14T22:41:28.000Z",
+                                "AttachmentId": "eni-attach-0611764e2b4d93ba2",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached"
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "k8s-worker-sg",
+                                    "GroupId": "sg-021a58d09979ee197"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "0a:a3:e0:44:2a:64",
+                            "NetworkInterfaceId": "eni-0f5ebe173e61c0d5b",
+                            "OwnerId": "626608068914",
+                            "PrivateDnsName": "ip-10-1-1-182.ap-south-1.compute.internal",
+                            "PrivateIpAddress": "10.1.1.182",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-3-7-254-118.ap-south-1.compute.amazonaws.com",
+                                        "PublicIp": "3.7.254.118"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-1-1-182.ap-south-1.compute.internal",
+                                    "PrivateIpAddress": "10.1.1.182"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-0738d1b5476344058",
+                            "VpcId": "vpc-0a0c255b83d732f5a",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "k8s-worker-sg",
+                            "GroupId": "sg-021a58d09979ee197"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "SpotInstanceRequestId": "sir-sxn8q5dn",
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
                         "HttpTokens": "optional",
                         "HttpPutResponseHopLimit": 1,
                         "HttpEndpoint": "enabled"
@@ -372,7 +372,7 @@
             ],
             "OwnerId": "626608068914",
             "RequesterId": "257867366987",
-            "ReservationId": "r-0c67c6d5cdf2f551c"
+            "ReservationId": "r-0cc35217578aec97e"
         }
     ]
 }

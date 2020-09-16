@@ -141,6 +141,7 @@ ssh-keygen -t rsa -b 4096 -f ec2-key << EOF
 
 
 EOF
+chmod 400 ec2-key
 
 aws ec2 delete-key-pair --key-name "${ec2_key}" --profile account1
 aws ec2 import-key-pair --key-name "${ec2_key}" --public-key-material "fileb://${ec2_key}.pub" --profile account1

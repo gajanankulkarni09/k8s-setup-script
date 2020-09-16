@@ -1,8 +1,8 @@
 {
     "SpotInstanceRequests": [
         {
-            "CreateTime": "2020-09-13T15:44:50.000Z",
-            "InstanceId": "i-03e4503aadc89a91f",
+            "CreateTime": "2020-09-14T22:41:17.000Z",
+            "InstanceId": "i-0a7c1a11802abca2c",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -32,21 +32,21 @@
             },
             "LaunchedAvailabilityZone": "ap-south-1b",
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-7kgip3yn",
+            "SpotInstanceRequestId": "sir-jzx8qpyn",
             "SpotPrice": "0.028200",
             "State": "active",
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.",
-                "UpdateTime": "2020-09-13T15:44:51.000Z"
+                "UpdateTime": "2020-09-14T22:41:18.000Z"
             },
             "Tags": [],
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"
         },
         {
-            "CreateTime": "2020-09-13T15:44:50.000Z",
-            "InstanceId": "i-088d409f01a77a1d6",
+            "CreateTime": "2020-09-14T22:41:17.000Z",
+            "InstanceId": "i-06e6bb2aadd44b522",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -76,13 +76,13 @@
             },
             "LaunchedAvailabilityZone": "ap-south-1b",
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-wj6gn3ep",
+            "SpotInstanceRequestId": "sir-mdzinhhp",
             "SpotPrice": "0.028200",
             "State": "active",
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.",
-                "UpdateTime": "2020-09-13T15:44:51.000Z"
+                "UpdateTime": "2020-09-14T22:41:18.000Z"
             },
             "Tags": [],
             "Type": "persistent",

@@ -1,6 +1,10 @@
 #!/bin/bash
 sudo apt install jq -y
-ec2_key="ec2-key"
+sudo apt install pssh -y
+
+domain_name=${1:-"gkawslearning.life"}
+ec2_key=${2:-"ec2-key"}
+
 cat ec2-parameters-template.json | sed -e "s/key_name/${ec2_key}/g2" \
                                           -e "s/instance_type/m5.large/g2" \
                                           -e "s/zone/ap-south-1b/g2" \
@@ -57,4 +61,4 @@ echo "installions on worker nodes"
 #     echo "installing k8s on worker node ${i}"
 #     ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${temp_ip}" "bash -s" -- < install-workernode.sh
 # done
-
+/bin/bash ./init-script.sh $master_private_ip $domain_name
