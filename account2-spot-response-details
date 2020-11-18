@@ -1,8 +1,8 @@
 {
     "SpotInstanceRequests": [
         {
-            "CreateTime": "2020-09-16T23:44:39.000Z",
-            "InstanceId": "i-0422830cbc6c084f1",
+            "CreateTime": "2020-10-23T02:33:09.000Z",
+            "InstanceId": "i-0f71c181aa50eaaac",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -14,7 +14,7 @@
                     "Name": "k8s-ec2-ebs-provisioner-policy"
                 },
                 "ImageId": "ami-02b5fbc2cb28b77b8",
-                "InstanceType": "m5.large",
+                "InstanceType": "c5.large",
                 "KeyName": "ec2-key",
                 "NetworkInterfaces": [
                     {
@@ -32,21 +32,21 @@
             },
             "LaunchedAvailabilityZone": "ap-south-1b",
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-px8gqsqn",
-            "SpotPrice": "0.028200",
+            "SpotInstanceRequestId": "sir-gg8ipxhq",
+            "SpotPrice": "0.027000",
             "State": "active",
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.",
-                "UpdateTime": "2020-09-16T23:44:42.000Z"
+                "UpdateTime": "2020-10-23T02:33:11.000Z"
             },
             "Tags": [],
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"
         },
         {
-            "CreateTime": "2020-09-16T23:44:39.000Z",
-            "InstanceId": "i-09552d06ac14147d2",
+            "CreateTime": "2020-10-23T02:33:09.000Z",
+            "InstanceId": "i-0720326a757dfa6f0",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -58,7 +58,7 @@
                     "Name": "k8s-ec2-ebs-provisioner-policy"
                 },
                 "ImageId": "ami-02b5fbc2cb28b77b8",
-                "InstanceType": "m5.large",
+                "InstanceType": "c5.large",
                 "KeyName": "ec2-key",
                 "NetworkInterfaces": [
                     {
@@ -76,21 +76,21 @@
             },
             "LaunchedAvailabilityZone": "ap-south-1b",
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-rqj8mi4m",
-            "SpotPrice": "0.028200",
+            "SpotInstanceRequestId": "sir-m4b8q16q",
+            "SpotPrice": "0.027000",
             "State": "active",
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.",
-                "UpdateTime": "2020-09-16T23:44:42.000Z"
+                "UpdateTime": "2020-10-23T02:33:11.000Z"
             },
             "Tags": [],
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"
         },
         {
-            "CreateTime": "2020-09-16T23:44:39.000Z",
-            "InstanceId": "i-00490c5522a352a5f",
+            "CreateTime": "2020-10-23T02:33:09.000Z",
+            "InstanceId": "i-036f905a94928c638",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -102,7 +102,7 @@
                     "Name": "k8s-ec2-ebs-provisioner-policy"
                 },
                 "ImageId": "ami-02b5fbc2cb28b77b8",
-                "InstanceType": "m5.large",
+                "InstanceType": "c5.large",
                 "KeyName": "ec2-key",
                 "NetworkInterfaces": [
                     {
@@ -120,13 +120,13 @@
             },
             "LaunchedAvailabilityZone": "ap-south-1b",
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-syygpnvq",
-            "SpotPrice": "0.028200",
+            "SpotInstanceRequestId": "sir-qe48m58q",
+            "SpotPrice": "0.027000",
             "State": "active",
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.",
-                "UpdateTime": "2020-09-16T23:44:42.000Z"
+                "UpdateTime": "2020-10-23T02:33:11.000Z"
             },
             "Tags": [],
             "Type": "persistent",

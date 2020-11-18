@@ -1,7 +1,7 @@
 {
     "SpotInstanceRequests": [
         {
-            "CreateTime": "2020-09-16T23:44:30.000Z",
+            "CreateTime": "2020-10-23T02:32:59.000Z",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -12,7 +12,7 @@
                     "Name": "k8s-ec2-ebs-provisioner-role"
                 },
                 "ImageId": "ami-02b5fbc2cb28b77b8",
-                "InstanceType": "m5.large",
+                "InstanceType": "c5.large",
                 "KeyName": "ec2-key",
                 "NetworkInterfaces": [
                     {
@@ -29,19 +29,19 @@
                 }
             },
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-cmygpwan",
-            "SpotPrice": "0.028200",
+            "SpotInstanceRequestId": "sir-x8qgpdbp",
+            "SpotPrice": "0.027000",
             "State": "open",
             "Status": {
                 "Code": "pending-evaluation",
                 "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
-                "UpdateTime": "2020-09-16T23:44:30.000Z"
+                "UpdateTime": "2020-10-23T02:32:59.000Z"
             },
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"
         },
         {
-            "CreateTime": "2020-09-16T23:44:30.000Z",
+            "CreateTime": "2020-10-23T02:32:59.000Z",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -52,7 +52,7 @@
                     "Name": "k8s-ec2-ebs-provisioner-role"
                 },
                 "ImageId": "ami-02b5fbc2cb28b77b8",
-                "InstanceType": "m5.large",
+                "InstanceType": "c5.large",
                 "KeyName": "ec2-key",
                 "NetworkInterfaces": [
                     {
@@ -69,13 +69,13 @@
                 }
             },
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-v47gngrp",
-            "SpotPrice": "0.028200",
+            "SpotInstanceRequestId": "sir-izximfxp",
+            "SpotPrice": "0.027000",
             "State": "open",
             "Status": {
                 "Code": "pending-evaluation",
                 "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
-                "UpdateTime": "2020-09-16T23:44:30.000Z"
+                "UpdateTime": "2020-10-23T02:32:59.000Z"
             },
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"

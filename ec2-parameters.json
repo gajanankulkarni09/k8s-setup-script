@@ -1,6 +1,6 @@
 {
     "key_name": "ec2-key",
-    "instance_type": "m5.large",
+    "instance_type": "c5.large",
     "zone": "ap-south-1b",
     "account1": {
         "iam_instance_profile":"k8s-ec2-ebs-provisioner-role",

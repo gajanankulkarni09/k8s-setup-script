@@ -6,7 +6,7 @@ domain_name=${1:-"gkawslearning.life"}
 ec2_key=${2:-"ec2-key"}
 
 cat ec2-parameters-template.json | sed -e "s/key_name/${ec2_key}/g2" \
-                                          -e "s/instance_type/m5.large/g2" \
+                                          -e "s/instance_type/c5.large/g2" \
                                           -e "s/zone/ap-south-1b/g2" \
                                           -e "s/account1_iam_instance_profile/k8s-ec2-ebs-provisioner-role/" \
                                           -e "s/master_subnet_id/subnet-0f47ec4d89b9d85cb/" \
@@ -18,7 +18,7 @@ cat ec2-parameters-template.json | sed -e "s/key_name/${ec2_key}/g2" \
                                           -e "s/account2_workers_sg_id/sg-021a58d09979ee197/"  > ec2-parameters.json
 
 ec2_details_file_name="ec2-details.json"
-#/bin/bash ./create-ec2.sh "ec2-parameters.json"
+/bin/bash ./create-ec2.sh "ec2-parameters.json"
 
 # "first.pem" "account2-ec2-key.pem" "account2-ec2-key.pem" "account2-ec2-key.pem")
 worker_ips=($(jq -r '.worker_ips | @sh' "${ec2_details_file_name}"))
@@ -34,7 +34,7 @@ sed -e "s/master_private_ip/${master_private_ip}/" \
     -e "s/bootstrap_token_value/${bootstrap_token_value}/" "kubeadm-config.yaml" > temp
 mv temp kubeadm-config.yaml
 
-#sleep 2m
+sleep 2m
 
 printf "ubuntu@%s\n" "${worker_ips[@]}" |  sed -e "s/'//g" > worker-hosts
 echo "ubuntu@${master_public_ip}" > all-hosts
@@ -42,26 +42,24 @@ cat worker-hosts >> all-hosts
 
 scp -i "${ec2_key}" -o StrictHostKeyChecking=no kubeadm-config.yaml "ubuntu@${master_public_ip}":config.yaml
 echo "installing prerequisites on all nodes"
-parallel-ssh -h all-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I < install-prerequisites.sh
+ parallel-ssh -h all-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I < install-prerequisites.sh
 
 echo "installing k8s on master"
 ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < install-master.sh
 echo "generating worker node script"
-ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < generate-workernode-script.sh "${bootstrap_token_value}" > install-workernode.sh
+ssh -i "${ec2_key}" -o StrictHostKeyChecking=no "ubuntu@${master_public_ip}" "bash -s" -- < get_apiserver_details.sh "${bootstrap_token_value}" > apiserver_details
+
+apiserver_ip=$(cat apiserver_details | awk '{print $1}')
+apiserver_token=$(cat apiserver_details | awk '{print $2}')
+apiserver_cert_hash=$(cat apiserver_details | awk '{print $3}')
+
+echo "#!/bin/bash" > current_install_workernode.sh
+echo "apiserver_ip=${apiserver_ip}" >> current_install_workernode.sh
+echo "apiserver_token=${apiserver_token}" >> current_install_workernode.sh
+echo "apiserver_cert_hash=${apiserver_cert_hash}" >> current_install_workernode.sh
+cat install-workernode.sh >> current_install_workernode.sh
+
 echo "installions on worker nodes"
-parallel-ssh -h worker-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I <install-workernode.sh
+parallel-ssh -h worker-hosts -x " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ${ec2_key}" -t 0 -I <current_install_workernode.sh
 
-#update local dns entry
-if sudo cat /etc/hosts | grep "gkawslearning.life"; then
-  dns_entry=$(sudo cat /etc/hosts | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5]) gkawslearning.life') 
-  sudo sed -e "s/${dns_entry}/${master_public_ip} gkawslearning.life/g" /etc/hosts > temp_dns
-  sudo cp temp_dns /etc/hosts
-else
-  sudo cat /etc/hosts > temp_dns
-  echo "" >> temp_dns  
-  echo "${master_public_ip} gkawslearning.life" >> temp_dns
-  sudo cp temp_dns /etc/hosts
-fi
-rm temp_dns
-
-/bin/bash ./init-script.sh $master_private_ip $domain_name
+/bin/bash ./init-script.sh $master_public_ip $master_private_ip $domain_name

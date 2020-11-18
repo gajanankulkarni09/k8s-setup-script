@@ -1,0 +1,17 @@
+{
+    "Subnet": {
+        "AvailabilityZone": "ap-south-1a",
+        "AvailabilityZoneId": "aps1-az1",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.3.0.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-08add410df9df1d53",
+        "VpcId": "vpc-04b54f8f8286ff8d0",
+        "OwnerId": "626608068914",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:ap-south-1:626608068914:subnet/subnet-08add410df9df1d53"
+    }
+}

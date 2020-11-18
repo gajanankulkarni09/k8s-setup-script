@@ -1,0 +1,18 @@
+{
+    "RouteTable": {
+        "Associations": [],
+        "PropagatingVgws": [],
+        "RouteTableId": "rtb-0d201cbc5956801a0",
+        "Routes": [
+            {
+                "DestinationCidrBlock": "10.2.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+            }
+        ],
+        "Tags": [],
+        "VpcId": "vpc-0a83de599c5cbfd37",
+        "OwnerId": "991864437682"
+    }
+}

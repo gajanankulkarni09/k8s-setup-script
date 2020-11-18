@@ -1,8 +1,22 @@
 #!/bin/bash
-master_private_ip=$1
-domain_name=$2
-ec2_key=${3:-"ec2-key"}
+master_public_ip=$1
+master_private_ip=$2
+domain_name=$3
+ec2_key=${4:-"ec2-key"}
 ec2_key="$(pwd)/${ec2_key}"
+
+#update local dns entry
+if sudo cat /etc/hosts | grep "gkawslearning.life"; then
+  dns_entry=$(sudo cat /etc/hosts | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5]) gkawslearning.life') 
+  sudo sed -e "s/${dns_entry}/${master_public_ip} gkawslearning.life/g" /etc/hosts > temp_dns
+  sudo cp temp_dns /etc/hosts
+else
+  sudo cat /etc/hosts > temp_dns
+  echo "" >> temp_dns  
+  echo "${master_public_ip} gkawslearning.life" >> temp_dns
+  sudo cp temp_dns /etc/hosts
+fi
+rm temp_dns
 
 ssh-keygen -f "/home/gajanan/.ssh/known_hosts" -R "${domain_name}"
 
