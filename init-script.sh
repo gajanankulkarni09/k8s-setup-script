@@ -46,7 +46,7 @@ cat temp_config > ~/.kube/config
 rm temp_config
 
 current_dir=$(pwd)
-cd ~/go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver
+cd ~/data/projects/go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver
 #scp -i "${ec2_key}" -o StrictHostKeyChecking=no deploy/kubernetes/secrets/aws_accounts.yaml  "ubuntu@${domain_name}:/home/ubuntu/aws_accounts.yaml"
 #scp -i "${ec2_key}" -o StrictHostKeyChecking=no deploy/kubernetes/secrets/credentials "ubuntu@${domain_name}:/home/ubuntu/credentials"
 

@@ -1,17 +1,17 @@
 {
     "Subnet": {
-        "AvailabilityZone": "ap-south-1a",
-        "AvailabilityZoneId": "aps1-az1",
+        "AvailabilityZone": "ap-south-1b",
+        "AvailabilityZoneId": "aps1-az3",
         "AvailableIpAddressCount": 251,
         "CidrBlock": "10.2.0.0/24",
         "DefaultForAz": false,
         "MapPublicIpOnLaunch": false,
         "State": "available",
-        "SubnetId": "subnet-03528bb409c436546",
-        "VpcId": "vpc-0a83de599c5cbfd37",
+        "SubnetId": "subnet-0dbb0243e0f2e3fa5",
+        "VpcId": "vpc-0a6da244437ea5c2e",
         "OwnerId": "991864437682",
         "AssignIpv6AddressOnCreation": false,
         "Ipv6CidrBlockAssociationSet": [],
-        "SubnetArn": "arn:aws:ec2:ap-south-1:991864437682:subnet/subnet-03528bb409c436546"
+        "SubnetArn": "arn:aws:ec2:ap-south-1:991864437682:subnet/subnet-0dbb0243e0f2e3fa5"
     }
 }

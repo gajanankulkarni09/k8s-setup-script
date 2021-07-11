@@ -1,7 +1,7 @@
 {
     "SpotInstanceRequests": [
         {
-            "CreateTime": "2020-10-23T02:32:59.000Z",
+            "CreateTime": "2021-07-11T13:34:46.000Z",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -18,7 +18,7 @@
                     {
                         "AssociatePublicIpAddress": true,
                         "DeviceIndex": 0,
-                        "SubnetId": "subnet-0cb52da0c85a58f96"
+                        "SubnetId": "subnet-0590c8877a89839ad"
                     }
                 ],
                 "Placement": {
@@ -29,19 +29,19 @@
                 }
             },
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-x8qgpdbp",
-            "SpotPrice": "0.027000",
+            "SpotInstanceRequestId": "sir-fx1iqdmq",
+            "SpotPrice": "0.029900",
             "State": "open",
             "Status": {
                 "Code": "pending-evaluation",
                 "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
-                "UpdateTime": "2020-10-23T02:32:59.000Z"
+                "UpdateTime": "2021-07-11T13:34:46.000Z"
             },
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"
         },
         {
-            "CreateTime": "2020-10-23T02:32:59.000Z",
+            "CreateTime": "2021-07-11T13:34:46.000Z",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -58,7 +58,7 @@
                     {
                         "AssociatePublicIpAddress": true,
                         "DeviceIndex": 0,
-                        "SubnetId": "subnet-0cb52da0c85a58f96"
+                        "SubnetId": "subnet-0590c8877a89839ad"
                     }
                 ],
                 "Placement": {
@@ -69,13 +69,13 @@
                 }
             },
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-izximfxp",
-            "SpotPrice": "0.027000",
+            "SpotInstanceRequestId": "sir-9zp8n1en",
+            "SpotPrice": "0.029900",
             "State": "open",
             "Status": {
                 "Code": "pending-evaluation",
                 "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
-                "UpdateTime": "2020-10-23T02:32:59.000Z"
+                "UpdateTime": "2021-07-11T13:34:46.000Z"
             },
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"

@@ -1,11 +1,11 @@
 {
   "master_ips":{
-    "public_ip":"15.207.16.153",
-    "private_ip":"10.0.0.203"
+    "public_ip":"3.109.3.73",
+    "private_ip":"10.2.0.76"
   },
-  "worker_ips":[ "13.127.144.214","3.7.45.147","65.0.135.169","13.127.56.104","65.0.105.179" ],
-  "account1_worker_private_ips": [ "10.0.1.69","10.0.1.223" ],
-  "account2_worker_private_ips": [ "10.1.1.7","10.1.1.44","10.1.1.47" ],
-  "account1_spot_request_ids": [ "sir-xzcgqnrm","sir-x8qgpdbp","sir-izximfxp" ],
-  "account2_spot_request_ids": [ "sir-qe48m58q","sir-gg8ipxhq","sir-m4b8q16q" ]
+  "worker_ips":[ "13.233.58.22","65.2.4.88","13.127.170.126","13.232.235.30","35.154.73.179" ],
+  "account1_worker_private_ips": [ "10.2.1.196","10.2.1.88" ],
+  "account2_worker_private_ips": [ "10.3.0.163","10.3.0.42","10.3.0.11" ],
+  "account1_spot_request_ids": [ "sir-kg68n5km","sir-fx1iqdmq","sir-9zp8n1en" ],
+  "account2_spot_request_ids": [ "sir-2wqgqjmm","sir-932gqg8p","sir-yxcrm3cq" ]
 } 

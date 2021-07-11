@@ -2,7 +2,7 @@
     "RouteTable": {
         "Associations": [],
         "PropagatingVgws": [],
-        "RouteTableId": "rtb-0e0788907727a3782",
+        "RouteTableId": "rtb-08a047bff67eb8ef8",
         "Routes": [
             {
                 "DestinationCidrBlock": "10.3.0.0/16",
@@ -12,7 +12,7 @@
             }
         ],
         "Tags": [],
-        "VpcId": "vpc-04b54f8f8286ff8d0",
+        "VpcId": "vpc-03de7940f2c7c11ef",
         "OwnerId": "626608068914"
     }
 }

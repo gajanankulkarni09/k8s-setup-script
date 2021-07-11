@@ -42,7 +42,7 @@ extract_spotInstance_details() {
 create_master_node() {
   
   export AWS_PROFILE=account1
-  aws ec2 request-spot-instances --spot-price "0.027" --instance-count 1 --type "persistent" --launch-specification file://master-specification.json --instance-interruption-behavior stop > master_spot_response.json
+  aws ec2 request-spot-instances --spot-price "0.0299" --instance-count 1 --type "persistent" --launch-specification file://master-specification.json --instance-interruption-behavior stop > master_spot_response.json
   echo waiting for master node to be created
   extract_spotInstance_details "master_spot_response.json"  "master" 
 
@@ -63,7 +63,7 @@ create_master_node() {
 create_account1_worker_nodes() {
 
   export AWS_PROFILE=account1
-  aws ec2 request-spot-instances --spot-price "0.027" --instance-count 2 --type "persistent" --launch-specification file://account1-worker-specification.json --instance-interruption-behavior stop > account1_workers_spot_response.json
+  aws ec2 request-spot-instances --spot-price "0.0299" --instance-count 2 --type "persistent" --launch-specification file://account1-worker-specification.json --instance-interruption-behavior stop > account1_workers_spot_response.json
   echo waiting for worker nodes to be created in account1
   extract_spotInstance_details "account1_workers_spot_response.json" "account1_workers"
 
@@ -84,7 +84,7 @@ create_account1_worker_nodes() {
 
 create_account2_worker_nodes() {
   export AWS_PROFILE=account2
-  aws ec2 request-spot-instances  --spot-price "0.027" --instance-count 3 --type "persistent" --launch-specification file://account2-worker-specification.json --instance-interruption-behavior stop > account2_workers_spot_response.json
+  aws ec2 request-spot-instances  --spot-price "0.0299" --instance-count 3 --type "persistent" --launch-specification file://account2-worker-specification.json --instance-interruption-behavior stop > account2_workers_spot_response.json
   echo waiting for worker nodes to be created in account2
   extract_spotInstance_details "account2_workers_spot_response.json"  "account2_workers"
 
@@ -107,38 +107,16 @@ ec2_params_file_name=$1
 ec2_key=$(jq -r '.key_name' "${ec2_params_file_name}")
 instance_type=$(jq -r '.instance_type' "${ec2_params_file_name}")
 zone=$(jq -r '.zone' "${ec2_params_file_name}")
-master_subnet_id=$(jq -r '.account1.master.subnet_id' "${ec2_params_file_name}")
-master_sg_id=$(jq -r '.account1.master.sg_id' "${ec2_params_file_name}")
+#master_subnet_id=$(jq -r '.account1.master.subnet_id' "${ec2_params_file_name}")
+#master_sg_id=$(jq -r '.account1.master.sg_id' "${ec2_params_file_name}")
 account1_iam_instance_profile=$(jq -r '.account1.iam_instance_profile' "${ec2_params_file_name}")
 account2_iam_instance_profile=$(jq -r '.account2.iam_instance_profile' "${ec2_params_file_name}")
-account1_worker_subnet_id=$(jq -r '.account1.workers.subnet_id' "${ec2_params_file_name}")
-account1_worker_sg_id=$(jq -r '.account1.workers.sg_id' "${ec2_params_file_name}")
-account2_worker_subnet_id=$(jq -r '.account2.workers.subnet_id' "${ec2_params_file_name}")
-account2_worker_sg_id=$(jq -r '.account2.workers.sg_id' "${ec2_params_file_name}")
+#account1_worker_subnet_id=$(jq -r '.account1.workers.subnet_id' "${ec2_params_file_name}")
+#account1_worker_sg_id=$(jq -r '.account1.workers.sg_id' "${ec2_params_file_name}")
+#account2_worker_subnet_id=$(jq -r '.account2.workers.subnet_id' "${ec2_params_file_name}")
+#account2_worker_sg_id=$(jq -r '.account2.workers.sg_id' "${ec2_params_file_name}")
 
 
-cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
-                                          -e "s/subnet_id/${master_subnet_id}/" \
-                                          -e "s/sg_id/${master_sg_id}/" \
-                                          -e "s/instance_type/${instance_type}/" \
-                                          -e "s/zone/${zone}/" \
-                                          -e "s/iam_instance_profile/${account1_iam_instance_profile}/"  > master-specification.json
-
-
-cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
-                                          -e "s/subnet_id/${account1_worker_subnet_id}/" \
-                                          -e "s/sg_id/${account1_worker_sg_id}/" \
-                                          -e "s/instance_type/${instance_type}/" \
-                                          -e "s/zone/${zone}/" \
-                                          -e "s/iam_instance_profile/${account1_iam_instance_profile}/"  > account1-worker-specification.json
-
-
-cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
-                                          -e "s/subnet_id/${account2_worker_subnet_id}/" \
-                                          -e "s/sg_id/${account2_worker_sg_id}/" \
-                                          -e "s/instance_type/${instance_type}/" \
-                                          -e "s/zone/${zone}/" \
-                                          -e "s/iam_instance_profile/${account2_iam_instance_profile}/"  > account2-worker-specification.json
 
 ssh-keygen -t rsa -b 4096 -f ec2-key << EOF
 
@@ -168,7 +146,7 @@ aws ec2 create-tags --resources "${account1_master_rtb_id}" --tags Key=Name,Valu
 aws ec2 create-route --route-table-id "${account1_master_rtb_id}" --destination-cidr-block 0.0.0.0/0 --gateway-id "${account1_vpc_ig}" 
 
 # create master subnet in account1
-aws ec2 create-subnet --cidr-block 10.2.0.0/24 --vpc-id "${account1_vpc_id}"  >account1-master-subnet
+aws ec2 create-subnet --cidr-block 10.2.0.0/24 --vpc-id "${account1_vpc_id}" --availability-zone "ap-south-1b" >account1-master-subnet
 master_subnet_id=$(jq -r '.Subnet.SubnetId' account1-master-subnet)
 aws ec2 create-tags --resources "${master_subnet_id}" --tags Key=Name,Value=k8s-master-subnet 
 aws ec2 modify-subnet-attribute --subnet-id "${master_subnet_id}" --map-public-ip-on-launch 
@@ -181,7 +159,7 @@ aws ec2 create-tags --resources "${account1_worker_rtb_id}" --tags Key=Name,Valu
 aws ec2 create-route --route-table-id "${account1_worker_rtb_id}" --destination-cidr-block 0.0.0.0/0 --gateway-id "${account1_vpc_ig}" 
 
 #create worker subnet in account1
-aws ec2 create-subnet --cidr-block 10.2.1.0/24 --vpc-id "${account1_vpc_id}"  >account1-worker-subnet
+aws ec2 create-subnet --cidr-block 10.2.1.0/24 --vpc-id "${account1_vpc_id}" --availability-zone "ap-south-1b" >account1-worker-subnet
 account1_worker_subnet_id=$(jq -r '.Subnet.SubnetId' account1-worker-subnet)
 aws ec2 create-tags --resources "${account1_worker_subnet_id}" --tags Key=Name,Value=k8s-worker-subnet 
 aws ec2 modify-subnet-attribute --subnet-id "${account1_worker_subnet_id}" --map-public-ip-on-launch 
@@ -207,7 +185,7 @@ aws ec2 create-tags --resources "${account2_worker_rtb_id}" --tags Key=Name,Valu
 aws ec2 create-route --route-table-id "${account2_worker_rtb_id}" --destination-cidr-block 0.0.0.0/0 --gateway-id "${account2_vpc_ig}" 
 
 #create worker subnet in account2
-aws ec2 create-subnet --cidr-block 10.3.0.0/24 --vpc-id "${account2_vpc_id}"  >account2-worker-subnet
+aws ec2 create-subnet --cidr-block 10.3.0.0/24 --vpc-id "${account2_vpc_id}" --availability-zone "ap-south-1b" >account2-worker-subnet
 account2_worker_subnet_id=$(jq -r '.Subnet.SubnetId' account2-worker-subnet)
 aws ec2 create-tags --resources "${account2_worker_subnet_id}" --tags Key=Name,Value=k8s-worker-subnet 
 aws ec2 modify-subnet-attribute --subnet-id "${account2_worker_subnet_id}" --map-public-ip-on-launch 
@@ -239,11 +217,11 @@ account2_worker_sg_id=$(jq -r '.GroupId' account2-worker-security-group)
 #API server port
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 443 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 443 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 443 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 443  --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 443 --cidr "${host_public_ip}/32"
 
 #ssh port
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol ssh --port 22 --cidr "${host_public_ip}/32"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 22 --cidr "${host_public_ip}/32"
 
 #etcd port
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 2379-2380 --source-group "${master_sg_id}"
@@ -254,59 +232,74 @@ aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protoc
 #dns ports
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 53 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 53 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 53 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 53 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 53 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 53 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 53 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 53 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 1023 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 1023 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 1023 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 1023 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 #weavnet
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 6783 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 6783 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 6783 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol tcp --port 6783 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 6783-6784 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${master_sg_id}"  --protocol udp --port 6783-6784 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 #account1 worker security group
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}" --protocol ssh --port 22 --cidr "${host_public_ip}/32"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}" --protocol tcp --port 22 --cidr "${host_public_ip}/32"
 
 #dns ports
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 53 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 53 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 53 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 53 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 53 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 53 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 53 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 53 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 1023 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 1023 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 1023 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 1023 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 #port 10250 used by kubelet
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 10250  --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 #port 30000-32767 for nodeport service type
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 30000-32767  --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 #weavnet
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol tcp --port 6783 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account1_worker_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account2_id}/${account2_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account1_worker_sg_id}"  --protocol udp --port 6783-6784 --group-owner "${account2_id}" --source-group "${account2_worker_sg_id}"
+
+cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
+                                          -e "s/subnet_id/${master_subnet_id}/" \
+                                          -e "s/sg_id/${master_sg_id}/" \
+                                          -e "s/instance_type/${instance_type}/" \
+                                          -e "s/zone/${zone}/" \
+                                          -e "s/iam_instance_profile/${account1_iam_instance_profile}/"  > master-specification.json
+
+
+cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
+                                          -e "s/subnet_id/${account1_worker_subnet_id}/" \
+                                          -e "s/sg_id/${account1_worker_sg_id}/" \
+                                          -e "s/instance_type/${instance_type}/" \
+                                          -e "s/zone/${zone}/" \
+                                          -e "s/iam_instance_profile/${account1_iam_instance_profile}/"  > account1-worker-specification.json
 
 
 create_master_node
@@ -315,40 +308,47 @@ create_account1_worker_nodes
 export AWS_PROFILE=account2
 
 #account2 worker security group
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}" --protocol ssh --port 22 --cidr "${host_public_ip}/32"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}" --protocol tcp --port 22 --cidr "${host_public_ip}/32"
 
 #dns ports
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --group-owner "${account1_id}"  --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --source-group "${account2_worker_sg_id}"
 
 #port 10250 used by kubelet
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${account2_worker_sg_id}"
 
 #port 30000-32767 for nodeport service type
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${account2_worker_sg_id}"
 
 #weavnet
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${account2_worker_sg_id}"
 
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${master_sg_id}"
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account1_id}/${account1_worker_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --group-owner "${account1_id}"  --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account2_worker_sg_id}"
 
+
+cat ec2-instance-specification.json | sed -e "s/key_name/${ec2_key}/" \
+                                          -e "s/subnet_id/${account2_worker_subnet_id}/" \
+                                          -e "s/sg_id/${account2_worker_sg_id}/" \
+                                          -e "s/instance_type/${instance_type}/" \
+                                          -e "s/zone/${zone}/" \
+                                          -e "s/iam_instance_profile/${account2_iam_instance_profile}/"  > account2-worker-specification.json
 
 aws ec2 delete-key-pair --key-name "${ec2_key}" 
 aws ec2 import-key-pair --key-name "${ec2_key}" --public-key-material "fileb://${ec2_key}.pub" 
