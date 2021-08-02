@@ -7,11 +7,11 @@
         "DefaultForAz": false,
         "MapPublicIpOnLaunch": false,
         "State": "available",
-        "SubnetId": "subnet-0590c8877a89839ad",
-        "VpcId": "vpc-0a6da244437ea5c2e",
+        "SubnetId": "subnet-08ff1862f5ed58a4d",
+        "VpcId": "vpc-04e9a6565627bee24",
         "OwnerId": "991864437682",
         "AssignIpv6AddressOnCreation": false,
         "Ipv6CidrBlockAssociationSet": [],
-        "SubnetArn": "arn:aws:ec2:ap-south-1:991864437682:subnet/subnet-0590c8877a89839ad"
+        "SubnetArn": "arn:aws:ec2:ap-south-1:991864437682:subnet/subnet-08ff1862f5ed58a4d"
     }
 }

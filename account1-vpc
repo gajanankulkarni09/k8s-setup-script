@@ -3,13 +3,13 @@
         "CidrBlock": "10.2.0.0/16",
         "DhcpOptionsId": "dopt-53ee1938",
         "State": "pending",
-        "VpcId": "vpc-0a6da244437ea5c2e",
+        "VpcId": "vpc-04e9a6565627bee24",
         "OwnerId": "991864437682",
         "InstanceTenancy": "default",
         "Ipv6CidrBlockAssociationSet": [],
         "CidrBlockAssociationSet": [
             {
-                "AssociationId": "vpc-cidr-assoc-03d86b41200eef48c",
+                "AssociationId": "vpc-cidr-assoc-06fe0a38cd6ae61fd",
                 "CidrBlock": "10.2.0.0/16",
                 "CidrBlockState": {
                     "State": "associated"

@@ -1,7 +1,7 @@
 {
     "SpotInstanceRequests": [
         {
-            "CreateTime": "2021-07-11T13:34:39.000Z",
+            "CreateTime": "2021-07-17T11:33:44.000Z",
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {
@@ -18,7 +18,7 @@
                     {
                         "AssociatePublicIpAddress": true,
                         "DeviceIndex": 0,
-                        "SubnetId": "subnet-0dbb0243e0f2e3fa5"
+                        "SubnetId": "subnet-01cb595557ec4e4b9"
                     }
                 ],
                 "Placement": {
@@ -29,13 +29,13 @@
                 }
             },
             "ProductDescription": "Linux/UNIX",
-            "SpotInstanceRequestId": "sir-kg68n5km",
+            "SpotInstanceRequestId": "sir-z9g698bj",
             "SpotPrice": "0.029900",
             "State": "open",
             "Status": {
                 "Code": "pending-evaluation",
                 "Message": "Your Spot request has been submitted for review, and is pending evaluation.",
-                "UpdateTime": "2021-07-11T13:34:39.000Z"
+                "UpdateTime": "2021-07-17T11:33:44.000Z"
             },
             "Type": "persistent",
             "InstanceInterruptionBehavior": "stop"

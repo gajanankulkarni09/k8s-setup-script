@@ -4,8 +4,8 @@
   "NetworkInterfaces": [
     {
       "DeviceIndex": 0,
-      "SubnetId": "subnet-013fc26ed9b02eb86",
-      "Groups": [ "sg-0b55345bb83c85dbc" ],
+      "SubnetId": "subnet-08c976dd013d596f9",
+      "Groups": [ "sg-08c6ce0c8c1cc76b2" ],
       "AssociatePublicIpAddress": true
     }
   ],

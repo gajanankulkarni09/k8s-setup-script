@@ -311,34 +311,34 @@ export AWS_PROFILE=account2
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}" --protocol tcp --port 22 --cidr "${host_public_ip}/32"
 
 #dns ports
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 53 --source-group "${account2_worker_sg_id}"
 
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --group-owner "${account1_id}"  --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 53 --source-group "${account2_worker_sg_id}"
 
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 1023 --source-group "${account2_worker_sg_id}"
 
 #port 10250 used by kubelet
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 10250  --source-group "${account2_worker_sg_id}"
 
 #port 30000-32767 for nodeport service type
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 30000-32767  --source-group "${account2_worker_sg_id}"
 
 #weavnet
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --group-owner "${account1_id}" --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol tcp --port 6783 --source-group "${account2_worker_sg_id}"
 
-aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${master_sg_id}"
+aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --group-owner "${account1_id}" --source-group "${master_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --group-owner "${account1_id}"  --source-group "${account1_worker_sg_id}"
 aws ec2 authorize-security-group-ingress --group-id  "${account2_worker_sg_id}"  --protocol udp --port 6783-6784 --source-group "${account2_worker_sg_id}"
 
